@@ -18,16 +18,16 @@ end
 --[[
 
 v1.2:
-- Added hotkeys to script. No need to modify/create uikeys.txt file. Currently the hotkeys are hardcoded:
-    - => Set Retreat Point
-    . => Unignore Selected Units
-    , => Ignore Selected Units
-    while holding LeftAlt:
-        - => Return After Retreat
-        . => Increase Retreat Threshold
-        , => Decrease Retreat Threshold
-- Added support for Legion: units to be ignored.
-- Code cleanups and optimizations.
+    - Added hotkeys to script. No need to modify/create uikeys.txt file. Currently the hotkeys are hardcoded:
+        - => Set Retreat Point
+        . => Unignore Selected Units
+        , => Ignore Selected Units
+        while holding LeftAlt:
+            - => Return After Retreat
+            . => Increase Retreat Threshold
+            , => Decrease Retreat Threshold
+    - Added support for Legion: units to be ignored.
+    - Code cleanups and optimizations.
 
 
 v1.0:
@@ -67,7 +67,7 @@ local ignoredDefsIDs = {
     "leghades", -- vehicle Alaris
     "legscout"  -- vehicle Wheelie
 }
-local myTeam = Spring.GetMyTeamID()
+
 local retreatingUnits = {}
 local unitGroup = {}
 local probedDefs = {}
@@ -111,6 +111,7 @@ local GL_ONE_MINUS_SRC_ALPHA = GL.ONE_MINUS_SRC_ALPHA
 local glCallList = gl.CallList
 local sin = math.sin
 local cos = math.cos
+local myTeam = Spring.GetMyTeamID()
 local SetUnitGroup = Spring.SetUnitGroup
 local GetSelectedUnits = Spring.GetSelectedUnits
 local GetUnitDefID = Spring.GetUnitDefID
