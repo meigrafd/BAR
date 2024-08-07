@@ -1,6 +1,7 @@
 # About this Project
 While researching and looking at the NuttyB mod, I noticed a few inconsistencies, such as missing customisations for Armada or Legion.\
-So I decided to develop an easy to use Google Sheet mask, like NuttyB provides, just for Scavenger.
+So I decided to develop an easy to use Google Sheet mask, like NuttyB provides, just for Scavenger.\
+This should make the multiplayer more exciting and challenging.
 
 The special feature is that all commanders have a shield with the same values, which improves with Evolving Commanders per level.\
 As template i used [Cortex](https://github.com/beyond-all-reason/Beyond-All-Reason/blob/master/units/other/evocom/corcomlvl10.lua#L403), which already has a high-quality shield from the basic game.\
@@ -26,8 +27,10 @@ Default Settings:
 - `NuttyB Unit Mods` modifies alot of Units and Defs. Files: [tweakunits5.lua](tweakunits5.lua), [tweakdefs_NuttyB.lua](tweakdefs_NuttyB.lua)
 - `Mega Nuke` Enables Nukes and modifies them. Files: [tweakunits4.lua](tweakunits4.lua)
 - `Restrict wind turbines to 20 maximum` Files: [tweakunits6_on.lua](tweakunits6_on.lua), [tweakunits6_off.lua](tweakunits6_off.lua)
+- `Plasma Turret Overhaul` modifies plasma based long range turrets. [Source](https://docs.google.com/document/d/161NSONfbjG5xxX-BAGhlQr7mtegCWjIFDjHs03qECC4/edit). Files: [tweakunits7.lua](tweakunits7.lua)
 
 
 
 ## Credits
-Source is based on [NuttyB](https://discord.com/channels/549281623154229250/1168959237641216131)
+- [NuttyB](https://discord.com/channels/549281623154229250/1168959237641216131)
+- [Plasma Turret Overhaul](https://discord.com/channels/549281623154229250/1267251807185535089)
