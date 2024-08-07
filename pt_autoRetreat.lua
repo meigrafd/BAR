@@ -393,12 +393,12 @@ function widget:Initialize()
 end
 
 function widget:Shutdown()
-	widgetHandler.actionHandler:RemoveAction(self, "setRetreatPoint", "p")
-	widgetHandler.actionHandler:RemoveAction(self, "returnAfterRetreat", "p")
-	widgetHandler.actionHandler:RemoveAction(self, "ignoreSelectedUnits", "p")
-	widgetHandler.actionHandler:RemoveAction(self, "unignoreSelectedUnits", "p")
-	widgetHandler.actionHandler:RemoveAction(self, "increaseRetreatThreshold", "p")
-	widgetHandler.actionHandler:RemoveAction(self, "decreaseRetreatThreshold", "p")
+    widgetHandler.actionHandler:RemoveAction(self, "setRetreatPoint", "p")
+    widgetHandler.actionHandler:RemoveAction(self, "returnAfterRetreat", "p")
+    widgetHandler.actionHandler:RemoveAction(self, "ignoreSelectedUnits", "p")
+    widgetHandler.actionHandler:RemoveAction(self, "unignoreSelectedUnits", "p")
+    widgetHandler.actionHandler:RemoveAction(self, "increaseRetreatThreshold", "p")
+    widgetHandler.actionHandler:RemoveAction(self, "decreaseRetreatThreshold", "p")
 end
 
 function widget:DrawWorldPreUnit()
