@@ -7,8 +7,8 @@ As template i used [Cortex](https://github.com/beyond-all-reason/Beyond-All-Reas
 However, this will get cancelled/overwritten when you activate "NuttyB Commanders".
 
 Ive added the Source-Lua-Code for every tweakdef or tweakunit to this repo.\
-To Decode from base64 use: https://base64.guru/converter/decode \
-To Encode Lua to base64 use: https://base64.guru/converter/encode 
+to Decode from base64: https://base64.guru/converter/decode \
+to Encode to base64: https://base64.guru/converter/encode 
 
 
 **Sheet**: https://docs.google.com/spreadsheets/d/1vo23r_rPDHBNn28kUU_a5o_cm4dVOlwsqkAqex5FdNE/edit?gid=1818736609
