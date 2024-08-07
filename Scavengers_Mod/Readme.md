@@ -1,14 +1,14 @@
 # About this Project
 While researching and looking at the NuttyB mod, I noticed a few inconsistencies, such as missing customisations for Armada or Legion.\
-So I decided to develop an easy to use Google Sheet mask, like NuttyB provides, just for Scavenger.\
+So I decided to develop an easy to use Google Sheet mask, like NuttyB provides, just for Scavenger.
 
 The special feature is that all commanders have a shield with the same values, which improves with Evolving Commanders per level.\
 As template i used [Cortex](https://github.com/beyond-all-reason/Beyond-All-Reason/blob/master/units/other/evocom/corcomlvl10.lua#L403), which already has a high-quality shield from the basic game.\
-However, this will get cancelled/overwritten when you activate "NuttyB Commanders".\
+However, this will get cancelled/overwritten when you activate "NuttyB Commanders".
 
 Ive added the Source-Lua-Code for every tweakdef or tweakunit to this repo.\
 To Decode from base64 use: https://base64.guru/converter/decode \
-To Encode Lua to base64 use: https://base64.guru/converter/encode \ 
+To Encode Lua to base64 use: https://base64.guru/converter/encode 
 
 
 **Sheet**: https://docs.google.com/spreadsheets/d/1vo23r_rPDHBNn28kUU_a5o_cm4dVOlwsqkAqex5FdNE/edit?gid=1818736609
