@@ -1,0 +1,436 @@
+TweakDefs and TweakUnits are used to change unit definitions at the start of the game. This can be used to change almost everything about any unit. It can not be used to change non-units, or change anything in the middle of the game, as the changes are applied only at the start.
+
+First, you need to determine if TweakUnits or TweakDefs are more appropriate for your purpose.
+
+TweakUnits are used to write values into the definitions files. If that value is already present, it will get overwritten by the new value.
+TweakUnits are appropriate when the changes you wish to make are simple, when few units are changed, and when you know exactly which units you wish to change.
+
+If you think TweakUnits are appropriate for your purpose, follow this link to the TweakUnits guide.
+
+TweakDefs are more complicated in that they allow you to run lua code instead of simply overwriting the definition values. The end result is still the changed definitions file, but the process allows you to use logic to make these changes.
+TweakDefs are appropriate for complicated changes, changes to many units and definitions at the same time, and changes to units based on parameters other than their name.
+
+If you think TweakDefs are appropriate for your purpose, follow this link to the TweakDefs guide.
+
+-----------------------------------------------------------------------------------------------------------------
+
+To create a TweakUnits, you need to create a table that mimics the definitions file of the unit you wish to change. You then change or add new values to the table as you see fit.
+You can see all the unit definition files at:
+https://github.com/beyond-all-reason/Beyond-All-Reason/tree/master/units
+
+For example, let's take a look at the Armada Solar Panel:
+https://github.com/beyond-all-reason/Beyond-All-Reason/blob/master/units/ArmBuildings/LandEconomy/armsolar.lua
+
+return {
+	armsolar = {
+		maxacc = 0,
+		activatewhenbuilt = true,
+		maxdec = 0,
+		buildangle = 4000,
+		energycost = 0,
+		metalcost = 155,
+		buildpic = "ARMSOLAR.DDS",
+		buildtime = 2800,
+		canrepeat = false,
+		category = "ALL NOTLAND NOTSUB NOWEAPON NOTSHIP NOTAIR NOTHOVER SURFACE EMPABLE",
+		collisionvolumeoffsets = "0.0 -18.0 1.0",
+		collisionvolumescales = "50.0 76.0 50.0",
+		collisionvolumetype = "Ell",
+		corpse = "DEAD",
+		damagemodifier = 0.5,
+		energystorage = 50,
+		energyupkeep = -20,
+		explodeas = "smallBuildingexplosiongeneric",
+		footprintx = 5,
+		footprintz = 5,
+		idleautoheal = 5,
+		idletime = 1800,
+		health = 340,
+		maxslope = 10,
+		maxwaterdepth = 0,
+		objectname = "Units/ARMSOLAR.s3o",
+		onoffable = true,
+		script = "Units/ARMSOLAR.cob",
+		seismicsignature = 0,
+		selfdestructas = "smallBuildingExplosionGenericSelfd",
+		sightdistance = 273,
+		yardmap = "yyoyy yoooy ooooo yoooy yyoyy",
+		customparams = {
+			usebuildinggrounddecal = true,
+			buildinggrounddecaltype = "decals/armsolar_aoplane.dds",
+			buildinggrounddecalsizey = 8,
+			buildinggrounddecalsizex = 8,
+			buildinggrounddecaldecayspeed = 30,
+			unitgroup = 'energy',
+			model_author = "Cremuss",
+			normaltex = "unittextures/Arm_normal.dds",
+			removestop = true,
+			removewait = true,
+			solar = true,
+			subfolder = "armbuildings/landeconomy",
+		},
+		featuredefs = {
+			dead = {
+				blocking = true,
+				category = "corpses",
+				collisionvolumeoffsets = "0 -18 1",
+				collisionvolumescales = "50 76 50",
+				collisionvolumetype = "Ell",
+				damage = 184,
+				featuredead = "HEAP",
+				footprintx = 5,
+				footprintz = 5,
+				height = 20,
+				metal = 75,
+				object = "Units/armsolar_dead.s3o",
+				reclaimable = true,
+			},
+			heap = {
+				blocking = false,
+				category = "heaps",
+				damage = 92,
+				footprintx = 5,
+				footprintz = 5,
+				height = 4,
+				metal = 30,
+				object = "Units/arm5X5B.s3o",
+				reclaimable = true,
+				resurrectable = 0,
+			},
+		},
+		sfxtypes = {
+			pieceexplosiongenerators = {
+				[1] = "deathceg2",
+				[2] = "deathceg3",
+				[3] = "deathceg4",
+			},
+		},
+		sounds = {
+			activate = "arm-bld-solar-activate",
+			canceldestruct = "cancel2",
+			deactivate = "arm-bld-solar-deactivate",
+			underattack = "warning1",
+			count = {
+				[1] = "count6",
+				[2] = "count5",
+				[3] = "count4",
+				[4] = "count3",
+				[5] = "count2",
+				[6] = "count1",
+			},
+			select = {
+				[1] = "solar1",
+			},
+		},
+	},
+}
+
+First, disregard the "return" statement, it is not part of the table we want to change. The table is signified by curly brackets {}, and it has a lot of parameters, but let's say you only want to change its metalcost - the cost in metal. You think that it would be more balanced at 120 metal. Your goal is getting to this:
+
+{
+	armsolar = {
+		maxacc = 0,
+		activatewhenbuilt = true,
+		maxdec = 0,
+		buildangle = 4000,
+		energycost = 0,
+		metalcost = 120,
+		buildpic = "ARMSOLAR.DDS",
+		buildtime = 2800,
+		canrepeat = false,
+		category = "ALL NOTLAND NOTSUB NOWEAPON NOTSHIP NOTAIR NOTHOVER SURFACE EMPABLE",
+		collisionvolumeoffsets = "0.0 -18.0 1.0",
+		collisionvolumescales = "50.0 76.0 50.0",
+		collisionvolumetype = "Ell",
+		corpse = "DEAD",
+		damagemodifier = 0.5,
+		energystorage = 50,
+		energyupkeep = -20,
+		explodeas = "smallBuildingexplosiongeneric",
+		footprintx = 5,
+		footprintz = 5,
+		idleautoheal = 5,
+		idletime = 1800,
+		health = 340,
+		maxslope = 10,
+		maxwaterdepth = 0,
+		objectname = "Units/ARMSOLAR.s3o",
+		onoffable = true,
+		script = "Units/ARMSOLAR.cob",
+		seismicsignature = 0,
+		selfdestructas = "smallBuildingExplosionGenericSelfd",
+		sightdistance = 273,
+		yardmap = "yyoyy yoooy ooooo yoooy yyoyy",
+		customparams = {
+			usebuildinggrounddecal = true,
+			buildinggrounddecaltype = "decals/armsolar_aoplane.dds",
+			buildinggrounddecalsizey = 8,
+			buildinggrounddecalsizex = 8,
+			buildinggrounddecaldecayspeed = 30,
+			unitgroup = 'energy',
+			model_author = "Cremuss",
+			normaltex = "unittextures/Arm_normal.dds",
+			removestop = true,
+			removewait = true,
+			solar = true,
+			subfolder = "armbuildings/landeconomy",
+		},
+		featuredefs = {
+			dead = {
+				blocking = true,
+				category = "corpses",
+				collisionvolumeoffsets = "0 -18 1",
+				collisionvolumescales = "50 76 50",
+				collisionvolumetype = "Ell",
+				damage = 184,
+				featuredead = "HEAP",
+				footprintx = 5,
+				footprintz = 5,
+				height = 20,
+				metal = 75,
+				object = "Units/armsolar_dead.s3o",
+				reclaimable = true,
+			},
+			heap = {
+				blocking = false,
+				category = "heaps",
+				damage = 92,
+				footprintx = 5,
+				footprintz = 5,
+				height = 4,
+				metal = 30,
+				object = "Units/arm5X5B.s3o",
+				reclaimable = true,
+				resurrectable = 0,
+			},
+		},
+		sfxtypes = {
+			pieceexplosiongenerators = {
+				[1] = "deathceg2",
+				[2] = "deathceg3",
+				[3] = "deathceg4",
+			},
+		},
+		sounds = {
+			activate = "arm-bld-solar-activate",
+			canceldestruct = "cancel2",
+			deactivate = "arm-bld-solar-deactivate",
+			underattack = "warning1",
+			count = {
+				[1] = "count6",
+				[2] = "count5",
+				[3] = "count4",
+				[4] = "count3",
+				[5] = "count2",
+				[6] = "count1",
+			},
+			select = {
+				[1] = "solar1",
+			},
+		},
+	},
+}
+
+This is technically a valid TweakUnits, and will do the job. However, it's unnecessarily long, as you overwrite the vast majority of parameters with the same values. You can remove all the lines that don't change anything from this tweak, and you will end up with:
+
+{
+	armsolar = {
+		metalcost = 120,
+	},
+}
+
+Much shorter, and now everyone understands exactly what the tweak does. With practice, you will be able to write them from scratch in that manner. 
+
+Remember that you can edit several lines in the same tweak:
+{
+	armsolar = {
+		metalcost = 120,
+        energycost = 1000,
+	},
+}
+
+or even several units:
+{
+	armsolar = {
+		metalcost = 120,
+        energycost = 1000,
+	},
+	corsolar = {
+		metalcost = 130,
+        energycost = 800,
+	},
+}
+
+Note that with several units, they still have to be within the same table, signified by {} on the outside of your entire code.
+
+Once you have your TweakUnits, you need to convert it into Base64. This is commonly done through https://www.base64encode.org/. Make sure to tick "Perform URL-safe encoding" and remove any equal signs (=) at the end of the tweak if your result has them.
+The end result looks like this:
+ewoJYXJtc29sYXIgPSB7CgkJbWV0YWxjb3N0ID0gMTIwLAogICAgICAgIGVuZXJneWNvc3QgPSAxMDAwLAoJfSwKY29yc29sYXIgPSB7CgkJbWV0YWxjb3N0ID0gMTMwLAogICAgICAgIGVuZXJneWNvc3QgPSA4MDAsCgl9LAp9
+
+You will then need to paste this sting of characters into the TweakUnits in the client. This can be done through Adv Options -> Cheats -> Tweak Units.
+Alternatively, in a multiplayer lobby, you can type "!bSet TweakUnits ewoJYXJtc29sYXIgPSB7CgkJbWV0YWxjb3N0ID0gMTIwLAogICAgICAgIGVuZXJneWNvc3QgPSAxMDAwLAoJfSwKY29yc29sYXIgPSB7CgkJbWV0YWxjb3N0ID0gMTMwLAogICAgICAgIGVuZXJneWNvc3QgPSA4MDAsCgl9LAp9" in the chat window.
+This method also allows you to enable up to 9 TweakUnits at the same time, with !bSet TweakUnits1, !bSet TweakUnits2 etc.
+
+You can attach a description to your tweak that will be visible in the game client, so others know what your tweak does. To do this, start the first line of your code with --. The next 25 characters after -- will be put as plain text in the modoptions summary.
+
+If your TweakUnits does not work afterwards, follow this link for troubleshooting steps.
+
+-----------------------------------------------------------------------------------------------------------------
+
+TweakDefs are very open-ended, and the ways in which you can edit the unit definitions are only limited by your own creativity and the capabilities of lua as a language.
+
+If you have no familiarity with lua, the bare minimum you need to understand can be read in this link:
+
+You can see all the unit definition files at:
+https://github.com/beyond-all-reason/Beyond-All-Reason/tree/master/units
+
+There are two major ways you might want to go about changing the value of a unitdef table with tweakdefs: direct overwrite and iteration with a loop.
+
+For a direct overwrite, simply set the value of a unitdef to whatever you wish. Let's say you want to change the metal cost of the Armada Solar Panel to 120:
+https://github.com/beyond-all-reason/Beyond-All-Reason/blob/master/units/ArmBuildings/LandEconomy/armsolar.lua
+
+You can set it directly with:
+
+UnitDefs.armsolar.metalcost = 120
+
+Alternatively:
+UnitDefs.armsolar["metalcost"] = 120
+
+Keep in mind that this is all lua code, so you can do whatever calculations you can imagine.
+Simple examples include:
+UnitDefs.armsolar.metalcost = UnitDefs.armsolar.metalcost - 35
+UnitDefs.armsolar.metalcost = UnitDefs.armsolar.metalcost * 0.775
+UnitDefs.armsolar.metalcost = math.min(UnitDefs.armsolar.metalcost, 120)
+UnitDefs.armsolar.metalcost = 120 + 120 - 120 - (60 * 2) + (30 * 4)
+UnitDefs.armsolar.metalcost = UnitDefs.armpw.buildtime / 12
+
+For an iteration with a loop, the solar example would look something like this:
+for name, unitDef in pairs(UnitDefs) do
+	if name == "armsolar" then
+	unitDef.metalcost = 120
+	end
+end
+
+`name, unitDef` are names you assign to the keys and values of the UnitDefs table. These names are arbitrary, so you may encounter code with them named differently, such as `n, uDef` or `_, ud`. In extreme cases, `a, b` or `apples, oranges`.
+It is generally good practice to avoid these extreme cases to make the code more comprehensible for others, or for yourself months down the line.
+
+If you want to change every basic solar in the game, you have to account for the other factions:
+for name, unitDef in pairs(UnitDefs) do
+	if name == "armsolar" or name == "corsolar" or name == "legsolar" then
+	unitDef.metalcost = 120
+	end
+end
+
+This is becoming unwieldy. You can use variables as you would in normal lua:
+local n1 = "armsolar"
+local n2 = "corsolar"
+local n3 = "legsolar"
+for name, unitDef in pairs(UnitDefs) do
+	if name == n1 or name == n2 or name == n3 then
+	unitDef.metalcost = 120
+	end
+end
+
+But maybe you want to use a table instead:
+local solarTable = {"armsolar", "corsolar", "legsolar"}
+for name, unitDef in pairs(UnitDefs) do
+	for i=1,3 do
+		if solarTable[i] == name then
+		unitDef.metalcost = 120
+		end
+	end
+end
+
+Let's imagine that the basic solar is the only unit in the game that does not cost energy to build. We can change all units with a 0 energy cost to have a 120 metal cost:
+for name, unitDef in pairs(UnitDefs) do
+	if unitDef.energycost == 0 then
+	unitDef.metalcost = 120
+	end
+end
+
+This has changed every unit that costs 0 energy to cost 120 metal. But wait, t1 walls also do not cost any energy, and we have accidentally set their metal cost to 120.
+Let's fix this by finding something that is unique to t1 walls. You can go by their name, as every t1 wall's name consists of a prefix of their faction and the word "drag" (armdrag, cordrag, legdrag).
+Let's filter for it:
+
+for name, unitDef in pairs(UnitDefs) do
+	if unitDef.energycost == 0 and string.sub(name,4,7) ~= "drag" then
+	unitDef.metalcost = 120
+	end
+end
+
+Alternatively, you might notice that the walls have customparams = {objectify = true,}. Let's filter for this:
+
+for name, unitDef in pairs(UnitDefs) do
+	if unitDef.energycost == 0 and unitDef.customparams.objectify ~= true then
+	unitDef.metalcost = 120
+	end
+end
+
+There are currently no units without customparams listed, but who knows what might get added to the game in the future, and we wouldn't want to run into a situation where unitDef.customparams is Nil. Let's account for this:
+for name, unitDef in pairs(UnitDefs) do
+	if unitDef.energycost == 0 and (unitDef.customparams == nil or unitDef.customparams.objectify ~= true) then
+	unitDef.metalcost = 120
+	end
+end
+
+If a unitdef does not have a customparams table, it follows that there can not be an objectify in that table. The condition will stop there and return true.
+
+This iterative process of isolating and editing exactly what you need is how TweakDefs are written. The only limit on the length of these tweaks is the character limit of every tweakdefs slot combined, so you have enough space to make complex edits to potentially every unit in the game.
+
+Once you have your TweakDefs, you need to convert it into Base64. This is commonly done through https://www.base64encode.org/. Make sure to tick "Perform URL-safe encoding" and remove any equal signs (=) at the end of the tweak if your result has them.
+
+The end result looks like this:
+Zm9yIG5hbWUsIHVuaXREZWYgaW4gcGFpcnMoVW5pdERlZnMpIGRvCglpZiB1bml0RGVmLmVuZXJneWNvc3QgPT0gMCBhbmQgKHVuaXREZWYuY3VzdG9tcGFyYW1zID09IG5pbCBvciB1bml0RGVmLmN1c3RvbXBhcmFtcy5vYmplY3RpZnkgfj0gdHJ1ZSkgdGhlbgoJdW5pdERlZi5tZXRhbGNvc3QgPSAxMjAKCWVuZAplbmQ
+
+You will then need to paste this sting of characters into the TweakDefs in the client. This can be done through Adv Options -> Cheats -> Tweak Defs.
+Alternatively, in a multiplayer lobby, you can type "!bSet TweakDefs Zm9yIG5hbWUsIHVuaXREZWYgaW4gcGFpcnMoVW5pdERlZnMpIGRvCglpZiB1bml0RGVmLmVuZXJneWNvc3QgPT0gMCBhbmQgKHVuaXREZWYuY3VzdG9tcGFyYW1zID09IG5pbCBvciB1bml0RGVmLmN1c3RvbXBhcmFtcy5vYmplY3RpZnkgfj0gdHJ1ZSkgdGhlbgoJdW5pdERlZi5tZXRhbGNvc3QgPSAxMjAKCWVuZAplbmQ" in the chat window.
+This method also allows you to enable up to 9 TweakDefs at the same time, with !bSet TweakDefs1, !bSet TweakDefs2 etc.
+
+You can attach a description to your tweak that will be visible in the game client, so others know what your tweak does. To do this, start the first line of your code with --. The next 25 characters after -- will be put as plain text in the modoptions summary.
+
+If your TweakDefs does not work afterwards, follow this link for troubleshooting steps.
+
+-----------------------------------------------------------------------------------------------------------------
+
+The course on lua can be found at:
+https://www.lua.org/pil/contents.html
+
+To work with tweakdefs, you should read and understand the following sections:
+1.2 – Global Variables - don't use global variables, use local only for tweakdefs
+2 – Types and Values
+2.2 – Booleans
+2.3 – Numbers
+2.4 – Strings
+2.5 – Tables
+2.1 – Nil
+4.2 – Local Variables and Blocks - only the first paragraph
+3.1 – Arithmetic Operators
+3.2 – Relational Operators
+3.3 – Logical Operators
+3.4 – Concatenation
+4.3.1 – if then else
+4.3.4 – Numeric for
+4.3.5 – Generic for - UnitDefs does not have numeric keys, so use pairs(UnitDefs)
+
+This should be enough to write and understand the most basic tweakdefs. For more advanced tweaking, the next step would be reading and understanding functions.
+Looking at existing code and understanding what it does is the weasiest way to see what can be done and how to do it.
+
+-----------------------------------------------------------------------------------------------------------------
+
+Your best friend when troubleshooting your tweaks is the log. You can find the current log in Beyond-All-Reason/data/infolog.txt. It is written in real time, so may lag a little behind what is happening in the game. Since the tweaks are loaded at the start of the game, by the time you load into a playable state, the log should have all the information you need.
+A more reliable option is opening a log of the previous game instance, which is written when the game is next opened at Beyond-All-Reason/data/log/XXXXXXXXXXXX_infolog.txt. This one has finished writing and is complete.
+
+Generally, three things can go wrong with your tweak:
+- It has failed to load, so the game has started without it
+- It has loaded, but does not do what you wanted it to do
+- It has failed so catastrophically that it crashed the entire game.
+
+The last one is very rare and generally only happens if the tweak has gone through just fine, but some other part of the game that depended on what you've changed can no longer operate properly.
+
+Most failing to load will be due to logic or syntax errors. In that case, the log is likely to tell you exactly what is wrong. Some general steps are:
+Search the log for "tweak". The log contains an encoded string of your tweak, make sure it is the right one and contains the right code.
+Search the log for "Error" and "Warning". If the tweak has crashed, there will be an error explaining why. Common causes are syntax errors, like forgetting an "end", or logic errors, like attempring to do logic operations with a Nil value.
+If no relevant errors or warnings are present, look closely at your code and try to understand what it does, since it may not be what you intended it to do. Look if the conditions in your code are being satisfied. Use Spring.Echo() calls to echo information into the log. For example, put Spring.Echo("This part fires") after an if ... then statement to see if the code after it is executed. Relaunch and search the log for your echoes.
+If you can not figure out a problem, feel free to ask for help in #modding-discussion. Explain what you are trying to do and the steps you've taken so far to troubleshoot your code.
+
+Good luck!
