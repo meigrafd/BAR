@@ -24,7 +24,7 @@ Default Settings:
 - **Difficulty** is the modoption of Scavenger and tries to figure out some balancing of start-metal/energy and the spawn settings. Easy, Normal, Hard, Very Hard, Epic.
 - **NuttyB Commagers** are the own modified Commanders from NuttyB v1.49, which had some changes to buildoptions, weapons and evolving; "Evolving Commanders" gets disabled for this. Files: [tweakunits1.lua](tweakunits1.lua), [tweakunits2.lua](tweakunits2.lua), [tweakunits3.lua](tweakunits3.lua)
 - **NuttyB Unit Mods** modifies alot of Units and Defs. Files: [tweakunits5.lua](tweakunits5.lua), [tweakdefs_NuttyB.lua](tweakdefs_NuttyB.lua)
-- **Mega Nuke** Enables Mukes and modifies them. Files: [tweakunits4.lua](tweakunits4.lua)
+- **Mega Nuke** Enables Nukes and modifies them. Files: [tweakunits4.lua](tweakunits4.lua)
 - **Restrict wind turbines to 20 maximum** Files: [tweakunits6_on.lua](tweakunits6_on.lua), [tweakunits6_off.lua](tweakunits6_off.lua)
 
 
