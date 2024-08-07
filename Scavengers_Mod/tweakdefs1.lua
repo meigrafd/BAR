@@ -1,0 +1,1 @@
+for name, ud in pairs(UnitDefs)do if string.sub(name,1,13) == "scavengerboss" then ud.health = math.floor(ud.health*1.3) end end
