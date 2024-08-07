@@ -15,8 +15,8 @@ to Encode to base64: https://base64.guru/converter/encode
 
 
 Default Settings:
-- Own tweaked Evolving Commanders based on Cortex, for fairplay.
-- Satellite Units. Buildable at "Experimental Aircraft Plant".
+- Own tweaked Evolving Commanders based on Cortex, for fairplay. File: [Scavengers_tweakdefs.lua](Scavengers_tweakdefs.lua)
+- Satellite Units. Buildable at "Experimental Aircraft Plant". File: [tweakunits.lua](tweakunits.lua)
 
 
 ### Sheet Settings:
