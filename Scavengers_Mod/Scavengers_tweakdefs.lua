@@ -59,15 +59,15 @@ local l = {
         armortype = "shields",
         energyuse = 1,
         force = 2.5,
-        intercepttype = 1,
+        intercepttype = 11111,
         power = 500,
         powerregen = 3,
         powerregenenergy = 5,
         radius = 50,
-        repulser = true,
+        repulser = false,
         smart = true,
-        startingpower = 100,
-        visiblerepulse = true,
+        startingpower = 500,
+        visiblerepulse = false,
         badcolor = {1, 0.2, 0.2, 0.2},
         goodcolor = {0.2, 1, 0.2, 0.17}
     }
@@ -116,12 +116,14 @@ for _, com in ipairs(commanders) do
     end
     o.shield.power = 700
     o.shield.radius = 100
+    o.shield.startingpower = o.shield.power
     o.shield.powerregen = 20
     o.shield.powerregenenergy = 0
     if string.sub(com, -4, -2) == "lvl" then
         local n = tonumber(string.sub(com, -1))
         if type(n)=="number" then
             o.shield.power = o.shield.power + (1000*n)
+            o.shield.startingpower = o.shield.power
             o.shield.powerregen = o.shield.powerregen + (50*n)
             o.shield.powerregenenergy = o.shield.powerregenenergy + (10*n)
         end
@@ -129,6 +131,7 @@ for _, com in ipairs(commanders) do
         o.shield.power = 30000
         o.shield.powerregen = 500
         o.shield.powerregenenergy = 100
+        o.shield.startingpower = o.shield.power
     end
     addWeapon(com, o)
 end
