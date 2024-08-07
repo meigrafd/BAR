@@ -19,10 +19,6 @@ Default Settings:
 - Satellite Units. Buildable at "Experimental Aircraft Plant".
 
 
-## Credits
-Source is based on [NuttyB](https://discord.com/channels/549281623154229250/1168959237641216131)
-
-
 ### Settings:
 - **ScavengerBoss Health** controls the Health of the EndBoss only. Files: [tweakdefs1.lua](tweakdefs1.lua)
 - **Difficulty** is the modoption of Scavenger and tries to figure out some balancing of start-metal/energy and the spawn settings. Easy, Normal, Hard, Very Hard, Epic.
@@ -31,3 +27,7 @@ Source is based on [NuttyB](https://discord.com/channels/549281623154229250/1168
 - **Mega Nuke** Enables Mukes and modifies them. Files: [tweakunits4.lua](tweakunits4.lua)
 - **Restrict wind turbines to 20 maximum** Files: [tweakunits6_on.lua](tweakunits6_on.lua), [tweakunits6_off.lua](tweakunits6_off.lua)
 
+
+
+## Credits
+Source is based on [NuttyB](https://discord.com/channels/549281623154229250/1168959237641216131)
