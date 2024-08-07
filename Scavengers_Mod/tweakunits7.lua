@@ -1,7 +1,6 @@
 {
-    corfgate = {
-        energycost = 89000,
-        metalcost = 4650,
+    armgate = {
+        metalcost = 2680,
     },
     armfgate = {
         energycost = 78000,
@@ -11,17 +10,6 @@
         buildoptions = {
             [16] = "armfgate",
         },
-    },
-    coracsub = {
-        buildoptions = {
-            [16] = "corfgate",
-        },
-    },
-    corgate = {
-        metalcost = 2800,
-    },
-    armgate = {
-        metalcost = 2680,
     },
     armguard = {
         energycost = 8050,
@@ -36,6 +24,55 @@
                 mygravity = 0.226,
                 weaponvelocity = 540,
             },
+        },
+    },
+    armbrtha = {
+        energycost = 66000,
+        metalcost = 5000,
+        weapondefs = {
+            lrpc = {
+                reloadtime = 10.5,
+                accuracy = 200,
+                range = 4900,
+                areaofeffect = 112,
+                weaponvelocity = 2050,
+                energypershot = 9000,
+                damage = {
+                default  = 1250,
+                    shields = 625,
+                },
+            },
+        },
+    },
+    armvulc = {
+        energycost = 750000,
+        metalcost = 60000,
+        buildtime = 1800000,
+        weapondefs = {
+            rflrpc = {
+                accuracy = 350,
+                areaofeffect = 112,
+                energypershot = 12000,
+                range = 5300,
+                reloadtime = 0.75,
+                weaponvelocity = 2500,
+                damage = {
+                    shields = 625,
+                default  = 1250,
+                },
+            },
+        },
+    },
+    corgate = {
+        metalcost = 2800,
+    },
+    corfgate = {
+        energycost = 89000,
+        metalcost = 4650,
+    },
+    coracsub = {
+        buildoptions = {
+            [16] = "corfgate",
         },
     },
     corpun = {
@@ -81,43 +118,6 @@
             },
         },
     },
-    armbrtha = {
-        energycost = 66000,
-        metalcost = 5000,
-        weapondefs = {
-            lrpc = {
-                reloadtime = 10.5,
-                accuracy = 200,
-                range = 4900,
-                areaofeffect = 112,
-                weaponvelocity = 2050,
-                energypershot = 9000,
-                damage = {
-                default  = 1250,
-                    shields = 625,
-                },
-            },
-        },
-    },
-    armvulc = {
-        energycost = 750000,
-        metalcost = 60000,
-        buildtime = 1800000,
-        weapondefs = {
-            rflrpc = {
-                accuracy = 350,
-                areaofeffect = 112,
-                energypershot = 12000,
-                range = 5300,
-                reloadtime = 0.75,
-                weaponvelocity = 2500,
-                damage = {
-                    shields = 625,
-                default  = 1250,
-                },
-            },
-        },
-    },
     corbuzz = {
         energycost = 860000,
         metalcost = 72000,
@@ -137,5 +137,5 @@
                 },
             },
         },
-    },
+    }
 }
