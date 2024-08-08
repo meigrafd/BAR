@@ -39,3 +39,4 @@ Default Settings:
 ## Credits
 - [NuttyB](https://discord.com/channels/549281623154229250/1168959237641216131)
 - [Plasma Turret Overhaul](https://discord.com/channels/549281623154229250/1267251807185535089)
+- [Speedy Scavengers](https://discord.com/channels/549281623154229250/1254587358830137415/1254587358830137415)
