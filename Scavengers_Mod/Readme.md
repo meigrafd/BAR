@@ -28,7 +28,12 @@ Default Settings:
 - `Mega Nuke` Enables Nukes and modifies them. Files: [tweakunits4.lua](tweakunits4.lua)
 - `Restrict wind turbines to 20 maximum` Files: [tweakunits6_on.lua](tweakunits6_on.lua), [tweakunits6_off.lua](tweakunits6_off.lua)
 - `Plasma Turret Overhaul` modifies plasma based long range turrets. [Source](https://docs.google.com/document/d/161NSONfbjG5xxX-BAGhlQr7mtegCWjIFDjHs03qECC4/edit). Files: [tweakunits7.lua](tweakunits7.lua)
+- `Boost first 60sec` modifies "Base Builder". [Source](https://discord.com/channels/549281623154229250/1254587358830137415/1254587358830137415). Files: [tweakdefs2.lua](tweakdefs2.lua)
 
+
+### Settings description:
+`Boost first 60sec`:\
+"Base Builder" boosts metalmake=25, energymake=5000, storage=10000 and workertime=5 for the first 60 seconds, after which it evolves back to its normal values.
 
 
 ## Credits
