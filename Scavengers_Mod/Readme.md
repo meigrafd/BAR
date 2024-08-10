@@ -29,7 +29,7 @@ Default Settings:
 - `Restrict wind turbines to 20 maximum` Files: [tweakunits6_on.lua](tweakunits6_on.lua), [tweakunits6_off.lua](tweakunits6_off.lua)
 - `Plasma Turret Overhaul` modifies plasma based long range turrets. [Source](https://docs.google.com/document/d/161NSONfbjG5xxX-BAGhlQr7mtegCWjIFDjHs03qECC4/edit). Files: [tweakunits7.lua](tweakunits7.lua)
 - `Boost first 60sec` modifies "Base Builder". [Source](https://discord.com/channels/549281623154229250/1254587358830137415/1254587358830137415). Files: [tweakdefs2.lua](tweakdefs2.lua)
-- `Evolve Eco` Intended for Difficulty Epic. Files: [tweakdefs3.lua](tweakdefs3.lua)
+- `Evolve Eco` Intended for Difficulty Epic! Files: [tweakdefs3.lua](tweakdefs3.lua)
 
 
 ### Settings description:
@@ -37,11 +37,13 @@ Default Settings:
 "Base Builder" boosts metalmake=25, energymake=5000, storage=10000 and workertime=5 for the first 60 seconds, after which it evolves back to its normal values.
 
 `Evolve Eco`:\
-Note that this is only intended for difficulty Epic and cheats without upgrade costs... You get more time for building Defence.
-- Wind Turbin after 60sec to Solar.
-- Solar after 120sec to Advanced Solar.
-- Advanced Solar after 120sec to Fusion Reactor.
-- Fusion Rector after 340sec to Advanced Reactor.
+Note that this is only intended for difficulty Epic and cheats without upgrade costs... To have more time for building Defence.\
+Evolution-Timer starts after each build, but is disabled if enemies are within range (in-combat state). Building also needs repair after evolved.
+- Wind Turbine after 60sec to Solar Collector.
+- Solar Collector after 120sec to Advanced Solar Collector.
+- Advanced Solar Collector after 240sec to Fusion Reactor.
+- Fusion Reactor after 340sec to Advanced Fusion Reactor.
+- Ignoring Tier 2 Wind Turbine.
 
 
 
