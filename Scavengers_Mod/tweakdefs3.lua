@@ -6,6 +6,7 @@ local toEvolve = {
             {from="armadvsol", fromDesc="Advanced Solar Collector", to="armwint2", toDesc="Advanced Wind Turbine", timer=240},
             {from="armwint2", fromDesc="Advanced Wind Turbine", to="armfus", toDesc="Fusion Reactor", timer=300},
             {from="armfus", fromDesc="Fusion Reactor", to="armafus", toDesc="Advanced Fusion Reactor", timer=360},
+            {from="armgeo", fromDesc="Geothermal Powerplant", to="armageo", toDesc="Advanced Geothermal Powerplant", timer=360},
             -- Metal
             {from="armmex", fromDesc="Metal Extractor", to="armmoho", toDesc="Advanced Metal Extractor", timer=360},
             -- Wall
@@ -20,6 +21,7 @@ local toEvolve = {
             {from="coradvsol", fromDesc="Advanced Solar Collector", to="corwint2", toDesc="Advanced Wind Turbine", timer=240},
             {from="corwint2", fromDesc="Advanced Wind Turbine", to="corfus", toDesc="Fusion Reactor", timer=300},
             {from="corfus", fromDesc="Fusion Reactor", to="corafus", toDesc="Advanced Fusion Reactor", timer=360},
+            {from="corgeo", fromDesc="Geothermal Powerplant", to="corageo", toDesc="Advanced Geothermal Powerplant", timer=360},
             {from="cormex", fromDesc="Metal Extractor", to="cormoho", toDesc="Advanced Metal Extractor", timer=360},
             {from="cordrag", fromDesc="Dragon's Teeth", to="corfort", toDesc="Fortification Wall", timer=360},
             {from="cornanotc", fromDesc="Construction Turret", to="cornanotct2", toDesc="Advanced Construction Turret", timer=120},
