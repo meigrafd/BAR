@@ -35,6 +35,7 @@ local toEvolve = {
             {from="legsolar", fromDesc="Solar Collector", to="legadvsol", toDesc="Advanced Solar Collector", timer=120},
             -- legion uses cortex after legadvsol
             {from="legadvsol", fromDesc="Advanced Solar Collector", to="corwint2", toDesc="Advanced Wind Turbine", timer=240},
+            {from="legtide", fromDesc="Tidal Generator", to="coruwfus", toDesc="Naval Fusion Reactor", timer=300},
             {from="legmex", fromDesc="Metal Extractor", to="legmoho", toDesc="Advanced Metal Extractor", timer=360},
             {from="legdrag", fromDesc="Dragon's Teeth", to="corfort", toDesc="Fortification Wall", timer=360},
         },
