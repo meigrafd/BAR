@@ -4,9 +4,10 @@ local toEvolve = {
             {from="armwin", fromDesc="Wind Turbine", to="armsolar", toDesc="Solar Collector", timer=60},
             {from="armsolar", fromDesc="Solar Collector", to="armadvsol", toDesc="Advanced Solar Collector", timer=120},
             {from="armadvsol", fromDesc="Advanced Solar Collector", to="armwint2", toDesc="Advanced Wind Turbine", timer=240},
-            {from="armwint2", fromDesc="Advanced Wind Turbine", to="armfus", toDesc="Fusion Reactor", timer=300},
+            {from="armwint2", fromDesc="Fusion Reactor", to="armfus", toDesc="Advanced Fusion Reactor", timer=360},
             {from="armfus", fromDesc="Fusion Reactor", to="armafus", toDesc="Advanced Fusion Reactor", timer=360},
             {from="armgeo", fromDesc="Geothermal Powerplant", to="armageo", toDesc="Advanced Geothermal Powerplant", timer=360},
+            {from="armtide", fromDesc="Tidal Generator", to="armuwfus", toDesc="Naval Fusion Reactor", timer=300},
             -- Metal
             {from="armmex", fromDesc="Metal Extractor", to="armmoho", toDesc="Advanced Metal Extractor", timer=360},
             -- Wall
@@ -22,9 +23,11 @@ local toEvolve = {
             {from="corwint2", fromDesc="Advanced Wind Turbine", to="corfus", toDesc="Fusion Reactor", timer=300},
             {from="corfus", fromDesc="Fusion Reactor", to="corafus", toDesc="Advanced Fusion Reactor", timer=360},
             {from="corgeo", fromDesc="Geothermal Powerplant", to="corageo", toDesc="Advanced Geothermal Powerplant", timer=360},
+            {from="cortide", fromDesc="Tidal Generator", to="coruwfus", toDesc="Naval Fusion Reactor", timer=300},
             {from="cormex", fromDesc="Metal Extractor", to="cormoho", toDesc="Advanced Metal Extractor", timer=360},
             {from="cordrag", fromDesc="Dragon's Teeth", to="corfort", toDesc="Fortification Wall", timer=360},
             {from="cornanotc", fromDesc="Construction Turret", to="cornanotct2", toDesc="Advanced Construction Turret", timer=120},
+            {from="cornanotcplat", fromDesc="Naval Construction Turret", to="cornanotc2plat", toDesc="Advanced Naval Construction Turret", timer=120},
             {from="corfasp", fromDesc="Water Air Repair Pad", to="mission_command_tower", toDesc="Mission Command Tower", timer=60, announce=true, anSize=25},
         },
     leg={
@@ -32,7 +35,7 @@ local toEvolve = {
             {from="legsolar", fromDesc="Solar Collector", to="legadvsol", toDesc="Advanced Solar Collector", timer=120},
             -- legion uses cortex after legadvsol
             {from="legadvsol", fromDesc="Advanced Solar Collector", to="corwint2", toDesc="Advanced Wind Turbine", timer=240},
-            {from="legmex", fromDesc="Metal Extractor", to="cormoho", toDesc="Advanced Metal Extractor", timer=360},
+            {from="legmex", fromDesc="Metal Extractor", to="legmoho", toDesc="Advanced Metal Extractor", timer=360},
             {from="legdrag", fromDesc="Dragon's Teeth", to="corfort", toDesc="Fortification Wall", timer=360},
         },
 }
@@ -50,7 +53,7 @@ for unitName, unitData in pairs(UnitDefs) do
                         unitData.customparams.evolution_announcement_size = evoEntry["anSize"] or 12.5
                     end
                     unitData.customparams.evolution_condition = "timer"
-                    unitData.customparams.evolution_timer = evoEntry["timer"]
+                    unitData.customparams.evolution_timer = evoEntry["timer"] or 120
                     unitData.customparams.combatradius = 117
                     unitData.customparams.evolution_health_transfer = "flat"
                 end

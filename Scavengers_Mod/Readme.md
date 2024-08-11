@@ -47,9 +47,11 @@ Evolution-Timer starts after each build, but is disabled if enemies are within r
 | Advanced Wind Turbine | Fusion Reactor | 300 |
 | Fusion Reactor | Advanced Fusion Reactor | 360 |
 | Geothermal Powerplant | Advanced Geothermal Powerplant | 360 |
+| Tidal Generator | Naval Fusion Reactor | 300 |
 | Metal Extractor | Advanced Metal Extractor | 360 |
 | Dragon's Teeth | Fortification Wall | 360 |
 | Construction Turret | Advanced Construction Turret | 120 |
+| Naval Construction Turret | Advanced Naval Construction Turret | 120 |
 | Water Air Repair Pad | Mission Command Tower`*` | 60 |
 
 `*` = with Shield, just4fun.
