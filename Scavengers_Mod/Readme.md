@@ -39,11 +39,19 @@ Default Settings:
 `Evolve Eco`:\
 Note that this is only intended for difficulty Epic and cheats without upgrade costs... To have more time for building Defence.\
 Evolution-Timer starts after each build, but is disabled if enemies are within range (in-combat state). Building also needs repair after evolved.
-- Wind Turbine after 60sec to Solar Collector.
-- Solar Collector after 120sec to Advanced Solar Collector.
-- Advanced Solar Collector after 240sec to Fusion Reactor.
-- Fusion Reactor after 340sec to Advanced Fusion Reactor.
-- Ignoring Tier 2 Wind Turbine.
+| From | To | Timer (seconds) |
+|:---|:---|:---|
+| Wind Turbine | Solar Collector | 60 |
+| Solar Collector | Advanced Solar Collector | 120 |
+| Advanced Solar Collector | Advanced Wind Turbine | 240 |
+| Advanced Wind Turbine | Fusion Reactor | 300 |
+| Fusion Reactor | Advanced Fusion Reactor | 360 |
+| Metal Extractor | Advanced Metal Extractor | 360 |
+| Dragon's Teeth | Fortification Wall | 360 |
+| Construction Turret | Advanced Construction Turret | 120 |
+| Water Air Repair Pad | Mission Command Tower`*` | 60 |
+
+`*` = with Shield, just4fun.
 
 
 
