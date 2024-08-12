@@ -6,14 +6,16 @@ local toEvolve = {
             {from="armadvsol", fromDesc="Advanced Solar Collector", to="armwint2", toDesc="Advanced Wind Turbine", timer=240},
             {from="armwint2", fromDesc="Fusion Reactor", to="armfus", toDesc="Advanced Fusion Reactor", timer=360},
             {from="armfus", fromDesc="Fusion Reactor", to="armafus", toDesc="Advanced Fusion Reactor", timer=360},
-            {from="armgeo", fromDesc="Geothermal Powerplant", to="armageo", toDesc="Advanced Geothermal Powerplant", timer=360},
+            -- sadly geo and mex throws errors, so disabled for fairplay till devs fix this
+            --{from="armgeo", fromDesc="Geothermal Powerplant", to="armageo", toDesc="Advanced Geothermal Powerplant", timer=360},
             {from="armtide", fromDesc="Tidal Generator", to="armuwfus", toDesc="Naval Fusion Reactor", timer=300},
             -- Metal
-            {from="armmex", fromDesc="Metal Extractor", to="armmoho", toDesc="Advanced Metal Extractor", timer=360},
+            --{from="armmex", fromDesc="Metal Extractor", to="armmoho", toDesc="Advanced Metal Extractor", timer=360},
             -- Wall
             {from="armdrag", fromDesc="Dragon's Teeth", to="armfort", toDesc="Fortification Wall", timer=360},
             -- other buildings
             {from="armnanotc", fromDesc="Construction Turret", to="armnanotct2", toDesc="Advanced Construction Turret", timer=120},
+            {from="armnanotcplat", fromDesc="Naval Construction Turret", to="armnanotc2plat", toDesc="Advanced Naval Construction Turret", timer=120},
             {from="armfasp", fromDesc="Water Air Repair Pad", to="mission_command_tower", toDesc="Mission Command Tower", timer=60, announce=true, anSize=25},
         },
     cor={
@@ -22,9 +24,9 @@ local toEvolve = {
             {from="coradvsol", fromDesc="Advanced Solar Collector", to="corwint2", toDesc="Advanced Wind Turbine", timer=240},
             {from="corwint2", fromDesc="Advanced Wind Turbine", to="corfus", toDesc="Fusion Reactor", timer=300},
             {from="corfus", fromDesc="Fusion Reactor", to="corafus", toDesc="Advanced Fusion Reactor", timer=360},
-            {from="corgeo", fromDesc="Geothermal Powerplant", to="corageo", toDesc="Advanced Geothermal Powerplant", timer=360},
+            --{from="corgeo", fromDesc="Geothermal Powerplant", to="corageo", toDesc="Advanced Geothermal Powerplant", timer=360},
             {from="cortide", fromDesc="Tidal Generator", to="coruwfus", toDesc="Naval Fusion Reactor", timer=300},
-            {from="cormex", fromDesc="Metal Extractor", to="cormoho", toDesc="Advanced Metal Extractor", timer=360},
+            --{from="cormex", fromDesc="Metal Extractor", to="cormoho", toDesc="Advanced Metal Extractor", timer=360},
             {from="cordrag", fromDesc="Dragon's Teeth", to="corfort", toDesc="Fortification Wall", timer=360},
             {from="cornanotc", fromDesc="Construction Turret", to="cornanotct2", toDesc="Advanced Construction Turret", timer=120},
             {from="cornanotcplat", fromDesc="Naval Construction Turret", to="cornanotc2plat", toDesc="Advanced Naval Construction Turret", timer=120},
@@ -36,7 +38,7 @@ local toEvolve = {
             -- legion uses cortex after legadvsol
             {from="legadvsol", fromDesc="Advanced Solar Collector", to="corwint2", toDesc="Advanced Wind Turbine", timer=240},
             {from="legtide", fromDesc="Tidal Generator", to="coruwfus", toDesc="Naval Fusion Reactor", timer=300},
-            {from="legmex", fromDesc="Metal Extractor", to="legmoho", toDesc="Advanced Metal Extractor", timer=360},
+            --{from="legmex", fromDesc="Metal Extractor", to="armmoho", toDesc="Advanced Metal Extractor", timer=360},
             {from="legdrag", fromDesc="Dragon's Teeth", to="corfort", toDesc="Fortification Wall", timer=360},
         },
 }
@@ -45,17 +47,17 @@ for unitName, unitData in pairs(UnitDefs) do
     for evoFaction,_ in pairs(toEvolve) do
         if faction == evoFaction then
             for _,evoEntry in ipairs(toEvolve[evoFaction]) do
-                if unitName == evoEntry["from"] then
-                    if evoEntry["announce"] == nil then evoEntry["announce"] = false end
+                if unitName == evoEntry.from then
+                    if evoEntry.announce == nil then evoEntry.announce = false end
                     unitData.customparams = unitData.customparams or {}
-                    unitData.customparams.evolution_target = evoEntry["to"]
-                    if evoEntry["announce"] == true then
-                        unitData.customparams.evolution_announcement = string.format("%s evolved to %s!", evoEntry["fromDesc"], evoEntry["toDesc"])
-                        unitData.customparams.evolution_announcement_size = evoEntry["anSize"] or 12.5
+                    unitData.customparams.evolution_target = evoEntry.to
+                    if evoEntry.announce == true then
+                        unitData.customparams.evolution_announcement = string.format("%s evolved to %s!", evoEntry.fromDesc, evoEntry.toDesc)
+                        unitData.customparams.evolution_announcement_size = evoEntry.anSize or 12.5
                     end
                     unitData.customparams.evolution_condition = "timer"
-                    unitData.customparams.evolution_timer = evoEntry["timer"] or 120
-                    unitData.customparams.combatradius = 117
+                    unitData.customparams.evolution_timer = evoEntry.timer or 120
+                    --unitData.customparams.combatRadius = 117
                     unitData.customparams.evolution_health_transfer = "flat"
                 end
             end
