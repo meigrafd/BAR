@@ -63,3 +63,4 @@ Evolution-Timer starts after each build, but is disabled if enemies are within r
 - [NuttyB](https://discord.com/channels/549281623154229250/1168959237641216131)
 - [Plasma Turret Overhaul](https://discord.com/channels/549281623154229250/1267251807185535089)
 - [Speedy Scavengers](https://discord.com/channels/549281623154229250/1254587358830137415/1254587358830137415)
+- [mex & goe workaround](https://discord.com/channels/549281623154229250/858397131148623892/1272528312429842543)
