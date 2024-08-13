@@ -1,14 +1,12 @@
 local limitToEvolve = {
     arm={
-            {from="armwin", limit=10},{from="armsolar", limit=10},{from="armadvsol", limit=10},{from="armwint2", limit=10},{from="armfus", limit=10},{from="armgeo", limit=10},
-            {from="armtide", limit=10},{from="armmex", limit=10},{from="armdrag", limit=10},{from="armnanotc", limit=10},{from="armnanotcplat", limit=10},{from="armfasp", limit=10},
+            {from="armwin", limit=20},{from="armsolar", limit=20},{from="armadvsol", limit=20},{from="armwint2", limit=20},{from="armfus", limit=20},{from="armtide", limit=20},
         },
     cor={
-            {from="corwin", limit=10},{from="corsolar", limit=10},{from="coradvsol", limit=10},{from="corwint2", limit=10},{from="corfus", limit=10},{from="corgeo", limit=10},
-            {from="cortide", limit=10},{from="cormex", limit=10},{from="cordrag", limit=10},{from="cornanotc", limit=10},{from="cornanotcplat", limit=10},{from="corfasp", limit=10},
+            {from="corwin", limit=20},{from="corsolar", limit=20},{from="coradvsol", limit=20},{from="corwint2", limit=20},{from="corfus", limit=20},{from="cortide", limit=20},
         },
     leg={
-            {from="legwin", limit=10},{from="legsolar", limit=10},{from="legadvsol", limit=10},{from="legtide", limit=10},{from="legmex", limit=10},{from="legdrag", limit=10},
+            {from="legwin", limit=20},{from="legsolar", limit=20},{from="legadvsol", limit=20},{from="legtide", limit=20},
         },
 }
 for unitName, unitData in pairs(UnitDefs) do
@@ -17,7 +15,7 @@ for unitName, unitData in pairs(UnitDefs) do
         if faction == evoFaction then
             for _,evoEntry in ipairs(limitToEvolve[evoFaction]) do
                 if unitName == evoEntry.from then
-                    if evoEntry.limit ~= nil then unitName.unitrestricted = evoEntry.limit end
+                    if evoEntry.limit ~= nil then unitData.unitrestricted = evoEntry.limit end
                 end
             end
         end

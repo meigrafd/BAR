@@ -13,8 +13,8 @@ for name, ud in pairs(UnitDefs) do
         ud.customparams.evolution_health_transfer = "percentage"
         ud.customparams.evolution_target = "armrespawn2"
         ud.customparams.evolution_condition = "timer"
-        ud.customparams.evolution_timer = 60
-        ud.metalmake = 25
+        ud.customparams.evolution_timer = 80
+        ud.metalmake = 50
         ud.energymake = 5000
         ud.metalstorage = 10000
         ud.energystorage = 10000
@@ -26,8 +26,8 @@ for name, ud in pairs(UnitDefs) do
         ud.customparams.evolution_health_transfer = "percentage"
         ud.customparams.evolution_target = "correspawn2"
         ud.customparams.evolution_condition = "timer"
-        ud.customparams.evolution_timer = 60
-        ud.metalmake = 25
+        ud.customparams.evolution_timer = 80
+        ud.metalmake = 50
         ud.energymake = 5000
         ud.metalstorage = 10000
         ud.energystorage = 10000
