@@ -15,7 +15,7 @@ for unitName, unitData in pairs(UnitDefs) do
         if faction == evoFaction then
             for _,evoEntry in ipairs(limitToEvolve[evoFaction]) do
                 if unitName == evoEntry.from then
-                    if evoEntry.limit ~= nil then unitData.unitrestricted = evoEntry.limit end
+                    if evoEntry.limit ~= nil then unitData.maxthisunit = evoEntry.limit end
                 end
             end
         end

@@ -1,6 +1,5 @@
 local toEvolve = {
     arm={
-            -- Energy
             {from="armwin", fromDesc="Wind Turbine", to="armsolar", toDesc="Solar Collector", timer=60},
             {from="armsolar", fromDesc="Solar Collector", to="armadvsol", toDesc="Advanced Solar Collector", timer=120},
             {from="armadvsol", fromDesc="Advanced Solar Collector", to="armwint2", toDesc="Advanced Wind Turbine", timer=240},
@@ -9,12 +8,9 @@ local toEvolve = {
             {from="armgeo", fromDesc="Geothermal Powerplant", to="armfakegeo", toDesc="-Workaround Fake Geo-", timer=360},
             {from="armfakegeo", fromDesc="-Workaround Fake Geo-", to="armageo", toDesc="Advanced Geothermal Powerplant", timer=2},
             {from="armtide", fromDesc="Tidal Generator", to="armuwfus", toDesc="Naval Fusion Reactor", timer=300},
-            -- Metal
             {from="armmex", fromDesc="Metal Extractor", to="armfakemex", toDesc="-Workaround Fake Mex-", timer=360},
             {from="armfakemex", fromDesc="-Workaround Fake Mex-", to="armmoho", toDesc="Advanced Metal Extractor", timer=2},
-            -- Wall
             {from="armdrag", fromDesc="Dragon's Teeth", to="armfort", toDesc="Fortification Wall", timer=360},
-            -- other buildings
             {from="armnanotc", fromDesc="Construction Turret", to="armnanotct2", toDesc="Advanced Construction Turret", timer=120},
             {from="armnanotcplat", fromDesc="Naval Construction Turret", to="armnanotc2plat", toDesc="Advanced Naval Construction Turret", timer=120},
             {from="armfasp", fromDesc="Water Air Repair Pad", to="mission_command_tower", toDesc="Mission Command Tower", timer=60, announce=true, anSize=25},
@@ -38,7 +34,6 @@ local toEvolve = {
     leg={
             {from="legwin", fromDesc="Wind Turbine", to="legsolar", toDesc="Solar Collector", timer=60},
             {from="legsolar", fromDesc="Solar Collector", to="legadvsol", toDesc="Advanced Solar Collector", timer=120},
-            -- legion uses cortex after legadvsol
             {from="legadvsol", fromDesc="Advanced Solar Collector", to="corwint2", toDesc="Advanced Wind Turbine", timer=240},
             {from="legtide", fromDesc="Tidal Generator", to="coruwfus", toDesc="Naval Fusion Reactor", timer=300},
             {from="legmex", fromDesc="Metal Extractor", to="legfakemex", toDesc="-Workaround Fake Mex-", timer=360},
@@ -46,8 +41,6 @@ local toEvolve = {
             {from="legdrag", fromDesc="Dragon's Teeth", to="corfort", toDesc="Fortification Wall", timer=360},
         },
 }
-
--- create fake mex and geo as workaround of current game-error.
 UnitDefs["armfakemex"] = table.copy(UnitDefs["armmex"])
 UnitDefs["armfakemex"].extractsmetal = 0
 UnitDefs["armfakegeo"] = table.copy(UnitDefs["armgeo"])
@@ -58,9 +51,6 @@ UnitDefs["corfakegeo"] = table.copy(UnitDefs["corgeo"])
 UnitDefs["corfakegeo"].customparams.geothermal = nil
 UnitDefs["legfakemex"] = table.copy(UnitDefs["legmex"])
 UnitDefs["legfakemex"].extractsmetal = 0
---UnitDefs["legfakegeo"] = table.copy(UnitDefs["leggeo"]
---UnitDefs["legfakegeo"].customparams.geothermal = nil
-
 for unitName, unitData in pairs(UnitDefs) do
     faction = string.sub(unitName, 1, 3)
     for evoFaction,_ in pairs(toEvolve) do
@@ -76,13 +66,11 @@ for unitName, unitData in pairs(UnitDefs) do
                     end
                     unitData.customparams.evolution_condition = "timer"
                     unitData.customparams.evolution_timer = evoEntry.timer or 120
-                    --unitData.customparams.combatRadius = 117
                     unitData.customparams.evolution_health_transfer = "flat"
                 end
             end
         end
     end
-    -- add Shield for Mission Command Tower. just4fun.
     if unitName == "mission_command_tower" then
         unitData.weapondefs = unitData.weapondefs or {}
         unitData.weapondefs["repulsor"] = {

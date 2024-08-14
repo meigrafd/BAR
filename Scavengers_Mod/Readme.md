@@ -54,6 +54,7 @@ Evolution-Timer starts after each build, but is disabled if enemies are within r
 | Construction Turret | Advanced Construction Turret | 120 |
 | Naval Construction Turret | Advanced Naval Construction Turret | 120 |
 | Water Air Repair Pad | Mission Command Tower`*` | 60 |
+
 `*` = with Shield, just4fun.
 
 `Restrict Eco`:\
