@@ -137,7 +137,7 @@ for _, com in ipairs(evolveCommanders) do
     UnitDefs[com].featuredefs.dead.reclaimable = false
     UnitDefs[com].featuredefs.dead.damage = 57600
 end
-if UnitDefs then
+if Spring.Utilities.Gametype.IsRaptors() then
     UnitDefs.raptor_air_kamikaze_basic_t2_v1.selfdestructas = "raptor_empdeath_big"
     UnitDefs.raptor_land_swarmer_emp_t2_v1.weapondefs.raptorparalyzersmall.damage.shields = 60
     UnitDefs.raptor_land_swarmer_emp_t2_v1.weapondefs.raptorparalyzersmall.paralyzetime = 6
@@ -164,77 +164,77 @@ if UnitDefs then
     UnitDefs.legcomt2off.featuredefs.dead.damage = 57600
     UnitDefs.legcomoff.featuredefs.dead.reclaimable = false
     UnitDefs.legcomoff.featuredefs.dead.damage = 57600
-end
 
-local t = {
-    "raptor_antinuke",
-    "raptor_turret_acid_t2_v1",
-    "raptor_turret_acid_t3_v1",
-    "raptor_turret_acid_t4_v1",
-    "raptor_turret_antiair_t2_v1",
-    "raptor_turret_antiair_t3_v1",
-    "raptor_turret_antiair_t4_v1",
-    "raptor_turret_antinuke_t2_v1",
-    "raptor_turret_antinuke_t3_v1",
-    "raptor_turret_antinuke_t4_v1",
-    "raptor_turret_basic_t2_v1",
-    "raptor_turret_basic_t3_v1",
-    "raptor_turret_basic_t4_v1",
-    "raptor_turret_burrow_t2_v1",
-    "raptor_turret_emp_t2_v1",
-    "raptor_turret_emp_t3_v1",
-    "raptor_turret_emp_t4_v1",
-    "raptor_worm_green"
-}
-for p, q in pairs(UnitDefs) do
-    for _, v in ipairs(t) do
-        if p == v then
-            q.maxthisunit = 10
-            q.health = q.health * 2
-            if q.weapondefs then
-                for _, s in pairs(q.weapondefs) do
-                    s.reloadtime = s.reloadtime / 2
+    local t = {
+        "raptor_antinuke",
+        "raptor_turret_acid_t2_v1",
+        "raptor_turret_acid_t3_v1",
+        "raptor_turret_acid_t4_v1",
+        "raptor_turret_antiair_t2_v1",
+        "raptor_turret_antiair_t3_v1",
+        "raptor_turret_antiair_t4_v1",
+        "raptor_turret_antinuke_t2_v1",
+        "raptor_turret_antinuke_t3_v1",
+        "raptor_turret_antinuke_t4_v1",
+        "raptor_turret_basic_t2_v1",
+        "raptor_turret_basic_t3_v1",
+        "raptor_turret_basic_t4_v1",
+        "raptor_turret_burrow_t2_v1",
+        "raptor_turret_emp_t2_v1",
+        "raptor_turret_emp_t3_v1",
+        "raptor_turret_emp_t4_v1",
+        "raptor_worm_green"
+    }
+    for p, q in pairs(UnitDefs) do
+        for _, v in ipairs(t) do
+            if p == v then
+                q.maxthisunit = 10
+                q.health = q.health * 2
+                if q.weapondefs then
+                    for _, s in pairs(q.weapondefs) do
+                        s.reloadtime = s.reloadtime / 2
+                    end
                 end
+                break
             end
-            break
         end
-    end
-    if string.sub(p, 1, 24) == "raptor_air_fighter_basic" then
-        if q.weapondefs then
-            for r, s in pairs(q.weapondefs) do
-                s.name = "Spike"
-                s.accuracy = 200
-                s.collidefriendly = 0
-                s.collidefeature = 0
-                s.avoidfeature = 0
-                s.avoidfriendly = 0
-                s.areaofeffect = 64
-                s.edgeeffectiveness = 0.3
-                s.explosiongenerator = "custom:raptorspike-large-sparks-burn"
-                s.cameraShake = {}
-                s.dance = {}
-                s.interceptedbyshieldtype = 0
-                s.model = "Raptors/spike.s3o"
-                s.reloadtime = 1.1
-                s.soundstart = "talonattack"
-                s.startvelocity = 200
-                s.submissile = 1
-                s.smoketrail = 0
-                s.smokePeriod = {}
-                s.smoketime = {}
-                s.smokesize = {}
-                s.smokecolor = {}
-                s.soundhit = {}
-                s.texture1 = {}
-                s.texture2 = {}
-                s.tolerance = {}
-                s.tracks = 0
-                s.turnrate = 60000
-                s.weaponacceleration = 100
-                s.weapontimer = 1
-                s.weaponvelocity = 1000
-                s.weapontype = {}
-                s.wobble = {}
+        if string.sub(p, 1, 24) == "raptor_air_fighter_basic" then
+            if q.weapondefs then
+                for r, s in pairs(q.weapondefs) do
+                    s.name = "Spike"
+                    s.accuracy = 200
+                    s.collidefriendly = 0
+                    s.collidefeature = 0
+                    s.avoidfeature = 0
+                    s.avoidfriendly = 0
+                    s.areaofeffect = 64
+                    s.edgeeffectiveness = 0.3
+                    s.explosiongenerator = "custom:raptorspike-large-sparks-burn"
+                    s.cameraShake = {}
+                    s.dance = {}
+                    s.interceptedbyshieldtype = 0
+                    s.model = "Raptors/spike.s3o"
+                    s.reloadtime = 1.1
+                    s.soundstart = "talonattack"
+                    s.startvelocity = 200
+                    s.submissile = 1
+                    s.smoketrail = 0
+                    s.smokePeriod = {}
+                    s.smoketime = {}
+                    s.smokesize = {}
+                    s.smokecolor = {}
+                    s.soundhit = {}
+                    s.texture1 = {}
+                    s.texture2 = {}
+                    s.tolerance = {}
+                    s.tracks = 0
+                    s.turnrate = 60000
+                    s.weaponacceleration = 100
+                    s.weapontimer = 1
+                    s.weaponvelocity = 1000
+                    s.weapontype = {}
+                    s.wobble = {}
+                end
             end
         end
     end

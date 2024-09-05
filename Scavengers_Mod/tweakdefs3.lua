@@ -41,6 +41,14 @@ local toEvolve = {
             {from="legdrag", fromDesc="Dragon's Teeth", to="corfort", toDesc="Fortification Wall", timer=360},
         },
 }
+local description = {
+    win="Wind Turbine", solar="Solar Collector", advsol="Advanced Solar Collector", wint2="Advanced Wind Turbine",
+    fus="Fusion Reactor", afus="Advanced Fusion Reactor", geo="Geothermal Powerplant", ageo="Advanced Geothermal Powerplant",
+    tide="Tidal Generator", uwfus="Naval Fusion Reactor", mex="Metal Extractor", moho="Advanced Metal Extractor",
+    drag="Dragon's Teeth", fort="Fortification Wall", nanotc="Construction Turret", nanotct2="Advanced Construction Turret",
+    nanotcplat="Naval Construction Turret", nanotc2plat="Advanced Naval Construction Turret",
+    fasp="Water Air Repair Pad", mission_command_tower="Mission Command Tower"
+}
 UnitDefs["armfakemex"] = table.copy(UnitDefs["armmex"])
 UnitDefs["armfakemex"].extractsmetal = 0
 UnitDefs["armfakegeo"] = table.copy(UnitDefs["armgeo"])
